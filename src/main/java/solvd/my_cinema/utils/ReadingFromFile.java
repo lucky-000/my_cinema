@@ -4,9 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 public class ReadingFromFile {
-public String  readFromFile(String path) {
+private final static Logger LOGGER = Logger.getLogger(JsonConverter.class);
 		
+public String  readFromFile(String path) {
+	
 		
 		File file = new File(path);
 		
@@ -15,8 +19,9 @@ public String  readFromFile(String path) {
 		try {
 
 			scanner = new Scanner(file);
-			
+			LOGGER.info("Read from file, finished!");
 			return scanner.nextLine();
+			
 
 		} catch (FileNotFoundException e) {
 

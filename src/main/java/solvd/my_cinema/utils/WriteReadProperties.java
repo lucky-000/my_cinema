@@ -1,5 +1,5 @@
 package solvd.my_cinema.utils;
-
+import org.apache.log4j.Logger;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,16 +8,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
 
-public class WriteReadProperties {
-	public String getProperties(String path, String key) {
 
+public class WriteReadProperties {
+	private final static Logger LOGGER = Logger.getLogger(JsonConverter.class);
+	
+	public String getProperties(String path, String key) {
+		
 		Properties properties = new Properties();
 		FileInputStream file = null;
 		try {
 			file = new FileInputStream(path);
 			properties.load(file);
 			file.close();
+			LOGGER.info("read from file properties, finished!");
 			return properties.getProperty(key);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -33,6 +38,8 @@ public class WriteReadProperties {
 			properties.setProperty(key, value);
 			properties.store(file, "");
 			file.close();
+			LOGGER.info("write to file properties, finished!");
+
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -46,6 +53,8 @@ public class WriteReadProperties {
 			properties.setProperty(key, value);
 			properties.store(file, "");
 			file.close();
+			LOGGER.info("write ++ to file properties, finished!");
+
 		} catch (IOException e) {
 
 			e.printStackTrace();

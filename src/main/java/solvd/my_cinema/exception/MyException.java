@@ -1,10 +1,15 @@
 package solvd.my_cinema.exception;
 
-public class MyException extends Exception{
+import org.apache.log4j.Logger;
 
+
+public class MyException extends Exception{
+	private final static Logger LOGGER = Logger.getLogger(MyException.class);
+	
 	public MyException() {
 		super();
-		System.err.println("--------Name and/or year are incorrect--------");
+		LOGGER.error("--------Name and/or year are incorrect--------");
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,8 +25,8 @@ public class MyException extends Exception{
 
 	public MyException(String message) {
 		super(message);
-		System.err.println("--------Name and/or year are incorrect--------");
-		// TODO Auto-generated constructor stub
+		LOGGER.error("--------Name and/or year are incorrect--------");
+			// TODO Auto-generated constructor stub
 	}
 
 	public MyException(Throwable cause) {

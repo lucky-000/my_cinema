@@ -1,18 +1,19 @@
 package solvd.my_cinema.cinema;
 
 import solvd.my_cinema.coll.Film;
+import solvd.my_cinema.utils.JsonConverter;
 import solvd.my_cinema.utils.WritingToFile;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.apache.log4j.Logger;
 
 public final class HomeCinema extends Cinema {
 	private String adress;
+	private final static Logger LOGGER = Logger.getLogger(HomeCinema.class);
 	
 
 	List<Film> content;
@@ -39,6 +40,7 @@ public final class HomeCinema extends Cinema {
 	}
 	public void addFilm(Film film) {
 		content.add(film);
+		LOGGER.info("Added to ArrayList");
 
 	}
 	public void addUniqFilm(Film film) {
@@ -46,17 +48,18 @@ public final class HomeCinema extends Cinema {
 
 	}
 	public void printSpectator() {
-		System.out.println("family");
+		LOGGER.info("family");
 	}
 	
 	public final void printFields(){
-		System.out.println("Title cinema = " + getTitle());
-	       System.out.println("URL Online Cinema = " + adress);
+		LOGGER.info("Title cinema = " + getTitle());
+		LOGGER.info("URL Online Cinema = " + adress);
 	       
 	       
 	   }
 	public void delFilm(int k) {
 		content.remove(k);
+		LOGGER.info("Deleted with ArrayList");
 	}
 	
 	
@@ -64,38 +67,32 @@ public final class HomeCinema extends Cinema {
 	public void printInfo() {
 		int index=0;
 		for (Film film :content) {
+			
 			System.out.println(index + "." + film.toString());
 			index++;
 		}
-	}
-	public void writeFile(String path) {
-		
-		try {
-			FileWriter writer = new FileWriter(path);
-		for(Film film : content) {
-
-		writer.write( film.toString() );
-		}
-		writer.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+		LOGGER.info(content);
 	}
 	
 	public void writeFilmToFile(String path) {
 		WritingToFile write = new WritingToFile();
 		for(Film film : content) {
 			
-		write.writeToFile("src/com/lucky/film/file.txt",film.toString());
+		write.writeToFile(path,film.toString());
 			}
+		LOGGER.info("Added to File");
 	}
 	public void printInfoHash() {
 		
 		for (Film film :uniqContent) {
-			System.out.println( film.toString());
+			LOGGER.info(film.toString());
 			
 		}
+	}
+	public void addCinemaToJson() {
+		JsonConverter jsonAction = new JsonConverter();
+		jsonAction.convertJavaToJsonFile(content, "cinema.json");
+		
+
 	}
 }

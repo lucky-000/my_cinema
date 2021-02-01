@@ -12,10 +12,12 @@ public class Executor {
 		String pathSecond = "C:" + separator + "Users"+ separator + "myrch" + separator + "eclipse-workspace" + separator + "my_cinema"+ separator  + "file.properties";
 		
 
-		System.out.println("----------------------------------------");
+		
 		Creator creator = new Creator();
 		creator.addNameYear(pathFirst,pathSecond);
-		System.out.println("----------------------------------------");
+
+//		JsonConverter jsonAction = new JsonConverter();
+//		jsonAction.convertJsonStrToAnimalPOJO(jsonStr)
 		
 	}
 }

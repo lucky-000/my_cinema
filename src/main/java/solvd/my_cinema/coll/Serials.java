@@ -1,7 +1,10 @@
 package solvd.my_cinema.coll;
 
+import org.apache.log4j.Logger;
 
 public class Serials implements Film{
+	private final static Logger LOGGER = Logger.getLogger(Serials.class);
+	
 	private String title;
 	private int year;
 	private int nseason;
@@ -46,16 +49,16 @@ public class Serials implements Film{
 	}
 //---------------------------------------------
 	   public void printFields(){
-	       System.out.println("Film title = "+title);
-	       System.out.println("Premiere date = "+year);
-	       System.out.println("Number of season = "+nseason);
-	       System.out.println("Number of series = "+nseries);
+		   LOGGER.info("Film title = "+title);
+		   LOGGER.info("Premiere date = "+year);
+		   LOGGER.info("Number of season = "+nseason);
+		   LOGGER.info("Number of series = "+nseries);
 	   }
 
 	
 	public void printTitle() {
-		System.out.println("Film title = "+title);
-		 System.out.println("Premiere date = "+year);
+		LOGGER.info("Film title = "+title);
+		LOGGER.info("Premiere date = "+year);
 		
 	}
 

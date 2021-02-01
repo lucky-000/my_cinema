@@ -1,9 +1,12 @@
 package solvd.my_cinema.coll;
 
 
+import org.apache.log4j.Logger;
+
+
 
 public class BasedOn extends Unreal{
-	
+	private final static Logger LOGGER = Logger.getLogger(BasedOn.class);	
 	private String event;
 	
 	public BasedOn() {
@@ -25,9 +28,9 @@ public class BasedOn extends Unreal{
 	
 //---------------------------------------------
 	   public void printFields(){
-	       System.out.println("Film title = "+this.getTitle());
-	       System.out.println("Premiere date = "+this.getYear());
-	       System.out.println("Based on "+event);
+	       LOGGER.info("Film title = "+this.getTitle());
+	       LOGGER.info("Premiere date = "+this.getYear());
+	       LOGGER.info("Based on "+event);
 
 	   }
 }
