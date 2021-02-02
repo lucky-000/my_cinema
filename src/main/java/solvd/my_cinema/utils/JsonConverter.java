@@ -25,7 +25,7 @@ public class JsonConverter {
 			e.printStackTrace();
 		}
 	}
-		public Serials convertJsonStrToAnimalPOJO(String valueFile) {
+		public Serials convertJsonStrToSerialsPOJO(String valueFile) {
 
 			Serials serial = null;
 			try {

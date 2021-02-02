@@ -126,7 +126,7 @@ public final class Creator {
 				LOGGER.info(valueFile.readFromFile("file.json"));
 				String value = valueFile.readFromFile("file.json");
 				JsonConverter jsonAction = new JsonConverter();
-				Serials serial1 = jsonAction.convertJsonStrToAnimalPOJO(value);
+				Serials serial1 = jsonAction.convertJsonStrToSerialsPOJO(value);
 				LOGGER.info("serial title from POJO :" + serial1.getTitle());
 				LOGGER.info("serial year from POJO :" + serial1.getYear());
 				LOGGER.info("serial season from POJO :" + serial1.getNseason());
